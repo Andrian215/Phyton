@@ -1,0 +1,73 @@
+from math import pi
+
+class TCircle:
+    def __init__(self,r,centre):
+        self.r=r
+        self.centre=centre
+    @property
+    def return_r_and_centre(self):
+        return self.r,self.centre
+    def square(self):
+        return self.r*self.r*pi
+    def func(self):
+        x = int(input('Довільна точка, координата x='))
+        y = int(input('Довільна точка, координата y='))
+        moduleofpoint=((x-self.centre)**2+(y-self.centre))**0.5
+        if moduleofpoint>=self.r:
+            print('Точка не належить даному колу')
+        else:
+            print('Точка належить даному колу')
+    def __sub__(self,other):
+        return self.r-other.r
+    def __add__(self,other):
+        return self.r+other.r
+    def __rmul__(self,other):
+        return self.r*other
+class TBall(TCircle):
+    def __init__(self,_r,_centre):
+        super().__init__(_r,_centre)
+    def volume_of_ball(self):
+        return 4/3*pi*self.r
+    def return_r_and_centre(self):
+        return self.r,self.centre
+    def square(self):
+        return 4*self.r*self.r*pi
+    def func(self):
+        x = int(input('Довільна точка, координата х:'))
+        y = int(input('Довільна точка, координата y:'))
+        z = int(input('Довільна точка, координата z:'))
+        moduleofpoint = ((x-self.centre)**2+(y-self.centre)**2+(z-self.centre)**2)**0.5
+        if moduleofpoint>=self.r:
+            print('Точка не належить даній сфері')
+        else:
+            print('Точка належить даній сфері')
+    def __add__(self,other):
+        return self.r+other.r
+    def __sub__(self,other):
+        return self.r-other.r
+    def __rmul__(self,other):
+        return self.r*other
+print('For Circle:')
+r1 = int(input('Радіус першого кола='))
+r2 = int(input('Радіус другого кола='))
+call1 = TCircle(r1,0)
+m2=call1.square()
+Centre = 0
+call2 = TCircle(r2,Centre)
+call1.func()
+print('Площа  кола={0}'.format(m2))
+print('Різниця радіусів:{0}'.format(call1-call2))
+print('Сума радіусів:{0}'.format(call1+call2))
+m3 = call1.__rmul__(5)
+print('Радіус помножений на число={0}'.format(m3))
+print('For Ball:')
+call_ball1 = TBall(r1,Centre)
+call_ball2 = TBall(r2,Centre)
+call_ball1.func()
+met2 = call_ball1.square()
+met3 = call_ball1.volume_of_ball()
+print('Сума радіусів сфер:{0}'.format(call_ball1+call_ball2))
+print('Різниця радіусів сфер:{0}'.format(call_ball1-call_ball2))
+met = call_ball1.__rmul__(10)
+print('Радіус сфери помножений на число:{0}'.format(met))
+print("Площа сфери={0}, Об'єм кулі={1}".format(met2,met3))

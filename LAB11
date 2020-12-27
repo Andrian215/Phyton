@@ -1,1 +1,26 @@
+import random
 
+class TSMatrix:
+    def __init__(self,elements,n):
+        self.elements=elements
+        self.n=n
+    def returnelements(self):
+        return self.elements
+    def min_max_elements(self):
+        for i in range(self.n):
+            return max(max(self.elements)),min(min(self.elements))
+    def sum_of_elements(self):
+        twoarraysintoone = [self.elements[i][j]for i in range(self.n)for j in range(self.n)]
+        for i in range(self.n):
+            return sum(twoarraysintoone)
+    def __add__(self,eladd):
+        eladd = int(input('el='))
+        for i in range(self.n):
+            return self.elements[i].append(eladd)
+    def __sub__(self,elremove):
+        elremove = int(input('el='))
+        for i in range(self.n):
+            if elremove in self.elements[i]:
+                return self.elements[i].remove(elremove)
+            else:
+                raise Exception('Такого елемента немає')
